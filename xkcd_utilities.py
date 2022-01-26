@@ -1,17 +1,4 @@
 import requests
-import os
-
-
-# def save_spacex_last_launch(urls, files_extensions):
-#     for url_index, url_value in enumerate(urls):
-#         response = requests.get(url_value)
-#         response.raise_for_status()
-#         filepath = 'images/spacex{}.{}'.format(
-#             url_index,
-#             files_extensions[url_index]
-#         )
-#         with open(filepath, 'wb') as file:
-#             file.write(response.content)
 
 
 def get_xckd_comics_meta(comics_number):
@@ -19,7 +6,13 @@ def get_xckd_comics_meta(comics_number):
     response = requests.get(url)
     response.raise_for_status()
     comics_meta = response.json()
+    print(comics_meta)
     return comics_meta
+
+
+def get_author_comment(comics_meta):
+    comment = comics_meta['alt']
+    return comment
 
 
 def save_xckd_pic_file(comics_meta):

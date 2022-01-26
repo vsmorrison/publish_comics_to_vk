@@ -6,7 +6,6 @@ def get_xckd_comics_meta(comics_number):
     response = requests.get(url)
     response.raise_for_status()
     comics_meta = response.json()
-    print(comics_meta)
     return comics_meta
 
 
@@ -23,3 +22,11 @@ def save_xckd_pic_file(comics_meta):
     filepath = f'{pic_title}.{pic_extension}'
     with open(filepath, 'wb') as file:
         file.write(response.content)
+    return filepath
+
+
+def get_latest_comics_number():
+    url = 'https://xkcd.com/info.0.json'
+    response = requests.get(url)
+    response.raise_for_status()
+    return response.json()['num']

@@ -1,23 +1,23 @@
 import requests
 
 
-def get_xckd_comics_meta(comics_number):
+def get_xckd_comics(comics_number):
     url = f'https://xkcd.com/{comics_number}/info.0.json'
     response = requests.get(url)
     response.raise_for_status()
-    comics_meta = response.json()
-    return comics_meta
+    comics = response.json()
+    return comics
 
 
-def get_author_comment(comics_meta):
-    comment = comics_meta['alt']
+def get_author_comment(comics):
+    comment = comics['alt']
     return comment
 
 
-def save_xckd_pic_file(comics_meta):
-    pic_title = comics_meta['title']
-    pic_extension = comics_meta['img'].split('.')[-1]
-    response = requests.get(url=comics_meta['img'])
+def save_xckd_pic_file(comics):
+    pic_title = comics['title']
+    pic_extension = comics['img'].split('.')[-1]
+    response = requests.get(url=comics['img'])
     response.raise_for_status()
     filepath = f'{pic_title}.{pic_extension}'
     with open(filepath, 'wb') as file:

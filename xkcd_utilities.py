@@ -9,11 +9,6 @@ def get_xckd_comics(comics_number):
     return comics
 
 
-def get_author_comment(comics):
-    comment = comics['alt']
-    return comment
-
-
 def save_xckd_pic_file(comics):
     pic_title = comics['title']
     pic_extension = comics['img'].split('.')[-1]

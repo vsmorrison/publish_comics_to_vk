@@ -16,7 +16,7 @@ def main():
         random.randint(1, latest_comics)
     )
     comics_filepath = xkcd_utilities.save_xckd_pic_file(comics)
-    comics_comment = xkcd_utilities.get_author_comment(comics)
+    comics_comment = comics['alt']
     upload_url = vk_utilities.get_upload_url(
         vk_access_token, vk_api_version, vk_group_id
     )

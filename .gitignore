@@ -130,3 +130,7 @@ dmypy.json
 
 # Pictures
 *.png
+
+#IDE
+.idea
+.DS_STORE

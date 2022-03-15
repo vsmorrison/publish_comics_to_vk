@@ -1,3 +1,5 @@
+import requests
+
 import xkcd_tools
 import vk_api_tools
 import os
@@ -32,6 +34,8 @@ def main():
             saved_photo['id'], saved_photo['owner_id'], vk_access_token,
             vk_api_version
         )
+    except requests.HTTPError as error:
+        print(error)
     finally:
         os.remove(comics_filepath)
 

@@ -26,10 +26,10 @@ pip install -r requirements.txt
 
 Далее необходимо связать свое приложение с api ВК, где понадобится ```client_id```.
 [Подробнее](https://dev.vk.com/api/access-token/authcode-flow-user).
-Полученный токен сохраните в ```.env``` как ```vk_access_token=token```.
+Полученный токен сохраните в ```.env``` как ```VK_ACCESS_TOKEN=token```.
 
 Также, когда вы создадите группу в ВК, то получите ее ID. Обычно его можно получить из url:
-```https://vk.com/club{id}```. Занесите его в ```.env``` как ```vk_group_id=id```
+```https://vk.com/club{id}```. Занесите его в ```.env``` как ```VK_GROUP_ID=id```
 
 ## Как запустить
 

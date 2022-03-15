@@ -1,5 +1,4 @@
 import requests
-
 import xkcd_tools
 import vk_api_tools
 import os

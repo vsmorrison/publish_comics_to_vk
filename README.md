@@ -22,7 +22,7 @@ pip install -r requirements.txt
 
 После создания, если перейти в раздел "Мои приложения", то вы увидите свое приложение, 
 в его настройках есть "ID приложения" это ```client_id```, сохраните его в файл ```.env```
-как ```vk_client_id=client_id```.
+как ```VK_CLIENT_ID=client_id```.
 
 Далее необходимо связать свое приложение с api ВК, где понадобится ```client_id```.
 [Подробнее](https://dev.vk.com/api/access-token/authcode-flow-user).

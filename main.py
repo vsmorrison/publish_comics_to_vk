@@ -7,9 +7,9 @@ import random
 
 def main():
     load_dotenv()
-    vk_access_token = os.getenv('vk_access_token')
+    vk_access_token = os.getenv('VK_ACCESS_TOKEN')
     vk_api_version = 5.131
-    vk_group_id = os.getenv('vk_group_id')
+    vk_group_id = os.getenv('VK_GROUP_ID')
     post_sender = {'user': 0, 'group': 1}
     latest_comics = xkcd_tools.get_latest_comics_number()
     comics = xkcd_tools.get_xckd_comics(

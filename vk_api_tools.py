@@ -10,7 +10,13 @@ def get_upload_url(token, api_version, group_id):
     }
     response = requests.get(api_url, params=payload)
     response.raise_for_status()
-    return response.json()
+    if 'error' in response.json():
+        raise requests.HTTPError(
+            f"Error Code: {response.json()['error']['error_code']}\n"
+            f"Error Message: {response.json()['error']['error_msg']}"
+        )
+    else:
+        return response.json()
 
 
 def upload_picture_to_server(url, picture):
@@ -20,7 +26,13 @@ def upload_picture_to_server(url, picture):
         }
         response = requests.post(url, files=files)
         response.raise_for_status()
-        return response.json()
+        if 'error' in response.json():
+            raise requests.HTTPError(
+                f"Error Code: {response.json()['error']['error_code']}\n"
+                f"Error Message: {response.json()['error']['error_msg']}"
+            )
+        else:
+            return response.json()
 
 
 def save_photo_to_album(group_id, photo, server, hash, token, api_version):
@@ -35,7 +47,13 @@ def save_photo_to_album(group_id, photo, server, hash, token, api_version):
     }
     response = requests.post(api_url, params=payload)
     response.raise_for_status()
-    return response.json()['response'][0]
+    if 'error' in response.json():
+        raise requests.HTTPError(
+            f"Error Code: {response.json()['error']['error_code']}\n"
+            f"Error Message: {response.json()['error']['error_msg']}"
+        )
+    else:
+        return response.json()['response'][0]
 
 
 def publish_photo(
@@ -53,4 +71,10 @@ def publish_photo(
     }
     response = requests.post(api_url, params=payload)
     response.raise_for_status()
-    return response.json()
+    if 'error' in response.json():
+        raise requests.HTTPError(
+            f"Error Code: {response.json()['error']['error_code']}\n"
+            f"Error Message: {response.json()['error']['error_msg']}"
+        )
+    else:
+        return response.json()

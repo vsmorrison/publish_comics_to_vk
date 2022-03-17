@@ -1,4 +1,5 @@
 import requests
+from os import path
 
 
 def get_xckd_comics(comics_number):
@@ -11,7 +12,7 @@ def get_xckd_comics(comics_number):
 
 def save_xckd_pic_file(comics):
     pic_title = comics['title']
-    pic_extension = comics['img'].split('.')[-1]
+    pic_extension = path.splitext(comics['img'])[-1]
     response = requests.get(url=comics['img'])
     response.raise_for_status()
     filepath = f'{pic_title}.{pic_extension}'

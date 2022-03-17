@@ -35,13 +35,13 @@ def upload_picture_to_server(url, picture):
             return response.json()
 
 
-def save_photo_to_album(group_id, photo, server, hash, token, api_version):
+def save_photo_to_album(group_id, photo, server, vk_hash, token, api_version):
     api_url = 'https://api.vk.com/method/photos.saveWallPhoto'
     payload = {
         'group_id': group_id,
         'photo': photo,
         'access_token': token,
-        'hash': hash,
+        'hash': vk_hash,
         'server': server,
         'v': api_version
     }

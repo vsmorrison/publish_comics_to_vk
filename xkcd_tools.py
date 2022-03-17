@@ -10,10 +10,10 @@ def get_xckd_comics(comics_number):
     return comics
 
 
-def save_xckd_pic_file(comics):
-    pic_title = comics['title']
-    pic_extension = path.splitext(comics['img'])[-1]
-    response = requests.get(url=comics['img'])
+def save_xckd_pic_file(comics_title, comics_path):
+    pic_title = comics_title
+    pic_extension = path.splitext(comics_path)[-1]
+    response = requests.get(url=comics_path)
     response.raise_for_status()
     filepath = f'{pic_title}.{pic_extension}'
     with open(filepath, 'wb') as file:

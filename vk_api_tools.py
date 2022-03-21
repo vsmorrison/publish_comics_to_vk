@@ -10,9 +10,9 @@ def get_upload_url(token, api_version, group_id):
     }
     response = requests.get(api_url, params=payload)
     response.raise_for_status()
-    response_json = response.json()
-    raise_if_vk_error(response_json)
-    return response_json
+    upload_server_url = response.json()
+    raise_if_vk_error(upload_server_url)
+    return upload_server_url
 
 
 def upload_picture_to_server(url, picture):
@@ -22,9 +22,9 @@ def upload_picture_to_server(url, picture):
         }
         response = requests.post(url, files=files)
         response.raise_for_status()
-        response_json = response.json()
-        raise_if_vk_error(response_json)
-        return response_json
+        uploaded_photo = response.json()
+        raise_if_vk_error(uploaded_photo)
+        return uploaded_photo
 
 
 def save_photo_to_album(group_id, photo, server, vk_hash, token, api_version):
@@ -39,9 +39,9 @@ def save_photo_to_album(group_id, photo, server, vk_hash, token, api_version):
     }
     response = requests.post(api_url, params=payload)
     response.raise_for_status()
-    response_json = response.json()
-    raise_if_vk_error(response_json)
-    return response_json['response'][0]
+    saved_photo = response.json()
+    raise_if_vk_error(saved_photo)
+    return saved_photo['response'][0]
 
 
 def publish_photo(
@@ -59,9 +59,9 @@ def publish_photo(
     }
     response = requests.post(api_url, params=payload)
     response.raise_for_status()
-    response_json = response.json()
-    raise_if_vk_error(response_json)
-    return response_json
+    published_photo = response.json()
+    raise_if_vk_error(published_photo)
+    return published_photo
 
 
 def raise_if_vk_error(response):

@@ -58,10 +58,8 @@ def publish_photo(
         'v': api_version
     }
     response = requests.post(api_url, params=payload)
-    print(type(response))
     response.raise_for_status()
     response_json = response.json()
-    print(type(response_json))
     raise_if_vk_error(response_json)
     return response_json
 

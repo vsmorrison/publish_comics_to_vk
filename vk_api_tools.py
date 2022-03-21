@@ -11,7 +11,7 @@ def get_upload_url(token, api_version, group_id):
     response = requests.get(api_url, params=payload)
     response.raise_for_status()
     response_json = response.json()
-    raise_vk_error(response_json)
+    raise_if_vk_error(response_json)
     return response_json
 
 
@@ -23,7 +23,7 @@ def upload_picture_to_server(url, picture):
         response = requests.post(url, files=files)
         response.raise_for_status()
         response_json = response.json()
-        raise_vk_error(response_json)
+        raise_if_vk_error(response_json)
         return response_json
 
 
@@ -40,7 +40,7 @@ def save_photo_to_album(group_id, photo, server, vk_hash, token, api_version):
     response = requests.post(api_url, params=payload)
     response.raise_for_status()
     response_json = response.json()
-    raise_vk_error(response_json)
+    raise_if_vk_error(response_json)
     return response_json['response'][0]
 
 
@@ -58,13 +58,15 @@ def publish_photo(
         'v': api_version
     }
     response = requests.post(api_url, params=payload)
+    print(type(response))
     response.raise_for_status()
     response_json = response.json()
-    raise_vk_error(response_json)
+    print(type(response_json))
+    raise_if_vk_error(response_json)
     return response_json
 
 
-def raise_vk_error(response):
+def raise_if_vk_error(response):
     if 'error' in response:
         raise requests.HTTPError(
             f"Error Code: {response['error']['error_code']}\n"
